@@ -1,54 +1,54 @@
 // 博客文章数据
-export const posts = [
+export let posts = [
   {
     id: 1,
-    title: 'Getting Started with Vue.js',
-    excerpt: 'Vue.js is a progressive JavaScript framework for building user interfaces. It is designed to be incrementally adoptable...',
+    title: 'Vue.js入门指南',
+    excerpt: 'Vue.js是一个用于构建用户界面的渐进式JavaScript框架。它被设计为可以自底向上逐层应用...',
     date: '2025-01-15',
-    author: 'Jane Doe',
-    tags: ['Vue.js', 'JavaScript', 'Tutorial'],
-    category: 'Frontend',
-    content: `Vue.js is a progressive JavaScript framework for building user interfaces. It is designed to be incrementally adoptable, meaning you can use as little or as much of Vue as you need. This makes it a great choice for both simple and complex applications.
+    author: '简·多伊',
+    tags: ['Vue.js', 'JavaScript', '教程'],
+    category: '前端',
+    content: `Vue.js是一个用于构建用户界面的渐进式JavaScript框架。它被设计为可以自底向上逐层应用，这意味着你可以根据需要使用少量或大量的Vue。这使其成为简单和复杂应用程序的绝佳选择。
 
-Vue's core library focuses on the view layer only, making it easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with supporting libraries and modern tooling.
+Vue的核心库只关注视图层，使其易于拾取并与其他库或现有项目集成。另一方面，当与支持库和现代工具结合使用时，Vue也完全有能力驱动复杂的单页应用程序。
 
-One of the main advantages of Vue is its gentle learning curve. If you have experience with HTML, CSS, and JavaScript, you'll find Vue very approachable. Its template syntax allows you to declaratively render data to the DOM using simple syntax that extends HTML.
+Vue的主要优势之一是其温和的学习曲线。如果你有HTML、CSS和JavaScript的经验，你会发现Vue非常容易上手。它的模板语法允许你使用扩展HTML的简单语法声明性地将数据渲染到DOM中。
 
-Vue also provides a component system that allows you to build encapsulated, reusable components that form a whole application. These components can be nested, composed, and managed independently, making it easier to develop and maintain large applications.`
+Vue还提供了一个组件系统，允许你构建封装的、可重用的组件，形成一个完整应用程序。这些组件可以嵌套、组合和独立管理，使开发和维护大型应用程序变得更加容易。`
   },
   {
     id: 2,
-    title: 'Understanding Modern Web Development',
-    excerpt: 'Modern web development involves various technologies and practices that have evolved significantly over the past few years...',
+    title: '理解现代Web开发',
+    excerpt: '现代Web开发涉及在过去几年中显著发展的各种技术和实践...',
     date: '2025-01-10',
-    author: 'John Smith',
-    tags: ['Web Development', 'JavaScript', 'Frontend'],
-    category: 'Web Development',
-    content: `Modern web development is a rapidly evolving field that encompasses a wide range of technologies, tools, and methodologies. Today's web developers need to be familiar with not just HTML, CSS, and JavaScript, but also frameworks, build tools, version control systems, and deployment strategies.
+    author: '约翰·史密斯',
+    tags: ['Web开发', 'JavaScript', '前端'],
+    category: 'Web开发',
+    content: `现代Web开发是一个快速发展的领域，涵盖了广泛的技术、工具和方法。今天的Web开发人员不仅需要熟悉HTML、CSS和JavaScript，还需要了解框架、构建工具、版本控制系统和部署策略。
 
-The rise of JavaScript frameworks like Vue, React, and Angular has transformed how we build web applications. These frameworks provide powerful tools for creating dynamic, interactive user interfaces while managing application state and data flow.
+JavaScript框架如Vue、React和Angular的兴起改变了我们构建Web应用程序的方式。这些框架提供了强大的工具来创建动态、交互式用户界面，同时管理应用程序状态和数据流。
 
-Additionally, modern web development emphasizes responsive design, accessibility, performance optimization, and cross-browser compatibility. With the increasing diversity of devices accessing the web, developers must ensure their applications work well across all platforms.
+此外，现代Web开发强调响应式设计、可访问性、性能优化和跨浏览器兼容性。随着访问Web的设备多样性不断增加，开发人员必须确保他们的应用程序在所有平台上都能良好运行。
 
-The development process has also become more sophisticated with tools like Webpack, Vite, and other build systems that handle bundling, minification, and optimization. These tools help developers create efficient applications that load quickly and provide a smooth user experience.`
+开发过程也变得更加复杂，使用Webpack、Vite等工具处理捆绑、缩小和优化。这些工具帮助开发人员创建高效的、快速加载并提供流畅用户体验的应用程序。`
   },
   {
     id: 3,
-    title: 'The Future of Web Technologies',
-    excerpt: 'As we look ahead, several emerging technologies are poised to reshape the web development landscape...',
+    title: 'Web技术的未来',
+    excerpt: '展望未来，几种新兴技术即将重塑Web开发格局...',
     date: '2025-01-05',
-    author: 'Alex Johnson',
-    tags: ['Future Tech', 'WebAssembly', 'PWA'],
-    category: 'Technology',
-    content: `The web development landscape is constantly evolving, with new technologies and trends emerging regularly. As we look toward the future, several key areas are likely to shape the direction of web development.
+    author: '亚历克斯·约翰逊',
+    tags: ['未来技术', 'WebAssembly', 'PWA'],
+    category: '技术',
+    content: `Web开发格局在不断变化，新的技术和趋势定期出现。展望未来，几个关键领域可能会塑造Web开发的方向。
 
-WebAssembly (WASM) is gaining traction as a way to run high-performance applications in the browser, potentially written in languages like C, C++, or Rust. This opens up possibilities for more complex applications that were previously only possible as native applications.
+WebAssembly（WASM）正在获得关注，成为一种在浏览器中运行高性能应用程序的方法，这些应用程序可能是用C、C++或Rust等语言编写的。这为以前只能作为本机应用程序的更复杂应用程序开辟了可能性。
 
-Progressive Web Apps (PWAs) continue to blur the lines between web and native applications, offering app-like experiences directly through the browser. They can be installed, work offline, and provide push notifications, making them an attractive alternative to traditional mobile apps.
+渐进式Web应用程序（PWA）继续模糊Web和本机应用程序之间的界限，直接通过浏览器提供类似应用程序的体验。它们可以安装、离线工作并提供推送通知，使其成为传统移动应用程序的有吸引力的替代品。
 
-Artificial Intelligence and Machine Learning are also making their way into web applications. With APIs and libraries like TensorFlow.js, developers can now integrate ML capabilities directly into their web applications without requiring server-side processing.
+人工智能和机器学习也正在进入Web应用程序。借助TensorFlow.js等API和库，开发人员现在可以直接将ML功能集成到Web应用程序中，而无需服务器端处理。
 
-Serverless architectures and edge computing are changing how we think about backend infrastructure, allowing developers to focus on writing code rather than managing servers. These technologies are making web applications more scalable and cost-effective.`
+无服务器架构和边缘计算正在改变我们对后端基础设施的思考方式，允许开发人员专注于编写代码，而不是管理服务器。这些技术使Web应用程序更具可扩展性和成本效益。`
   }
 ];
 
@@ -110,4 +110,36 @@ export const getPostsByCategory = (category) => {
 // 根据标签获取文章
 export const getPostsByTag = (tag) => {
   return posts.filter(post => post.tags.includes(tag));
+};
+
+// 创建新文章
+export const createPost = (postData) => {
+  const newId = posts.length > 0 ? Math.max(...posts.map(p => p.id)) + 1 : 1;
+  const newPost = {
+    id: newId,
+    ...postData,
+    date: postData.date || new Date().toISOString().split('T')[0]
+  };
+  posts.push(newPost);
+  return newPost;
+};
+
+// 更新文章
+export const updatePost = (id, postData) => {
+  const index = posts.findIndex(post => post.id === id);
+  if (index !== -1) {
+    posts[index] = { ...posts[index], ...postData };
+    return posts[index];
+  }
+  return null;
+};
+
+// 删除文章
+export const deletePost = (id) => {
+  const index = posts.findIndex(post => post.id === id);
+  if (index !== -1) {
+    posts.splice(index, 1);
+    return true;
+  }
+  return false;
 };

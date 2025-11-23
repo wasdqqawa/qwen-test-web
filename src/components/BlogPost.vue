@@ -3,7 +3,7 @@
     <article class="post-content" v-if="post">
       <h1 class="post-title">{{ post.title }}</h1>
       <div class="post-meta">
-        <p>By {{ post.author }} on {{ formatDate(post.date) }}</p>
+        <p>作者 {{ post.author }} 发布于 {{ formatDate(post.date) }}</p>
       </div>
       <div class="post-body" v-html="formatContent(post.content)"></div>
       
@@ -16,7 +16,7 @@
           ← {{ prevPost.title }}
         </router-link>
         
-        <router-link to="/" class="nav-link home">Back to Home</router-link>
+        <router-link to="/" class="nav-link home">返回首页</router-link>
         
         <router-link 
           v-if="nextPost" 
@@ -31,9 +31,9 @@
     </article>
     
     <div v-else class="not-found">
-      <h2>Post not found</h2>
-      <p>The post you're looking for doesn't exist.</p>
-      <router-link to="/">Back to Home</router-link>
+      <h2>未找到文章</h2>
+      <p>您查找的文章不存在。</p>
+      <router-link to="/">返回首页</router-link>
     </div>
   </div>
 </template>

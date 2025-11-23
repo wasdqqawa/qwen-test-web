@@ -1,31 +1,28 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import LanguageSwitcher from './components/LanguageSwitcher.vue'
 </script>
 
 <template>
   <div id="app">
     <nav class="navbar">
       <div class="nav-container">
-        <RouterLink to="/" class="nav-logo">{{ $t('message.welcome') }}</RouterLink>
+        <RouterLink to="/" class="nav-logo">我的博客</RouterLink>
         <ul class="nav-menu">
           <li class="nav-item">
-            <RouterLink to="/" class="nav-link">{{ $t('message.home') }}</RouterLink>
+            <RouterLink to="/" class="nav-link">首页</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/about" class="nav-link">{{ $t('message.about') }}</RouterLink>
+            <RouterLink to="/about" class="nav-link">关于</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/contact" class="nav-link">{{ $t('message.contact') }}</RouterLink>
+            <RouterLink to="/contact" class="nav-link">联系</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/categories" class="nav-link">{{ $t('message.categories') }}</RouterLink>
+            <RouterLink to="/categories" class="nav-link">分类</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink to="/manage" class="nav-link">{{ $t('message.manage_posts') }}</RouterLink>
+            <RouterLink to="/manage" class="nav-link">管理文章</RouterLink>
           </li>
-        </ul>
-        <LanguageSwitcher />
       </div>
     </nav>
 
@@ -34,7 +31,7 @@ import LanguageSwitcher from './components/LanguageSwitcher.vue'
     </main>
 
     <footer class="footer">
-      <p>&copy; 2025 {{ $t('message.welcome') }}. {{ $t('message.all_rights_reserved') }}.</p>
+      <p>&copy; 2025 我的博客. 版权所有.</p>
     </footer>
   </div>
 </template>

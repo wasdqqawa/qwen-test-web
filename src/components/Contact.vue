@@ -1,23 +1,23 @@
 <template>
   <div class="contact">
     <section class="hero">
-      <h1>Contact Us</h1>
-      <p>Have questions or feedback? Get in touch with us</p>
+      <h1>联系我们</h1>
+      <p>有问题或反馈？请随时与我们联系</p>
     </section>
 
     <section class="content">
       <div class="contact-info">
-        <h2>Get In Touch</h2>
-        <p>If you have any questions, suggestions, or just want to say hello, feel free to reach out to us using any of the methods below.</p>
+        <h2>联系我们</h2>
+        <p>如果您有任何问题、建议或只是想打个招呼，请随时使用以下任何方式与我们联系。</p>
         
         <div class="contact-details">
           <div class="contact-item">
-            <h3>Email</h3>
+            <h3>邮箱</h3>
             <p><a href="mailto:hello@example.com">hello@example.com</a></p>
           </div>
           
           <div class="contact-item">
-            <h3>Follow Us</h3>
+            <h3>关注我们</h3>
             <div class="social-links">
               <a href="#" target="_blank">Twitter</a>
               <a href="#" target="_blank">GitHub</a>
@@ -28,32 +28,32 @@
       </div>
 
       <form class="contact-form" @submit.prevent="submitForm">
-        <h2>Send a Message</h2>
+        <h2>发送消息</h2>
         
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">姓名</label>
           <input type="text" id="name" v-model="form.name" required>
         </div>
         
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">邮箱</label>
           <input type="email" id="email" v-model="form.email" required>
         </div>
         
         <div class="form-group">
-          <label for="subject">Subject</label>
+          <label for="subject">主题</label>
           <input type="text" id="subject" v-model="form.subject" required>
         </div>
         
         <div class="form-group">
-          <label for="message">Message</label>
+          <label for="message">消息</label>
           <textarea id="message" v-model="form.message" rows="5" required></textarea>
         </div>
         
-        <button type="submit" class="submit-btn">Send Message</button>
+        <button type="submit" class="submit-btn">发送消息</button>
         
         <div v-if="submitted" class="success-message">
-          Thank you for your message! We'll get back to you soon.
+          感谢您的消息！我们会尽快回复您。
         </div>
       </form>
     </section>

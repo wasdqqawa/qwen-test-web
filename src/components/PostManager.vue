@@ -1,53 +1,53 @@
 <template>
   <div class="post-manager">
     <section class="hero">
-      <h1>Manage Blog Posts</h1>
-      <p>Create, edit, and manage your blog content</p>
+      <h1>管理博客文章</h1>
+      <p>创建、编辑和管理您的博客内容</p>
     </section>
 
     <div class="content-container">
       <div class="post-form">
-        <h2>{{ editingPost ? 'Edit Post' : 'Create New Post' }}</h2>
+        <h2>{{ editingPost ? '编辑文章' : '创建新文章' }}</h2>
         
         <form @submit.prevent="savePost">
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">标题</label>
             <input 
               type="text" 
               id="title" 
               v-model="currentPost.title" 
               required 
               class="form-input"
-              placeholder="Enter post title"
+              placeholder="输入文章标题"
             >
           </div>
           
           <div class="form-group">
-            <label for="excerpt">Excerpt</label>
+            <label for="excerpt">摘要</label>
             <textarea 
               id="excerpt" 
               v-model="currentPost.excerpt" 
               required 
               class="form-textarea"
-              placeholder="Brief description of the post"
+              placeholder="文章的简要描述"
               rows="3"
             ></textarea>
           </div>
           
           <div class="form-group">
-            <label for="author">Author</label>
+            <label for="author">作者</label>
             <input 
               type="text" 
               id="author" 
               v-model="currentPost.author" 
               required 
               class="form-input"
-              placeholder="Author name"
+              placeholder="作者姓名"
             >
           </div>
           
           <div class="form-group">
-            <label for="date">Date</label>
+            <label for="date">日期</label>
             <input 
               type="date" 
               id="date" 
@@ -58,32 +58,32 @@
           </div>
           
           <div class="form-group">
-            <label for="category">Category</label>
+            <label for="category">分类</label>
             <select 
               id="category" 
               v-model="currentPost.category" 
               required 
               class="form-input"
             >
-              <option value="">Select a category</option>
-              <option value="Technology">Technology</option>
-              <option value="Web Development">Web Development</option>
-              <option value="Frontend">Frontend</option>
-              <option value="Backend">Backend</option>
-              <option value="Design">Design</option>
-              <option value="Tutorial">Tutorial</option>
-              <option value="News">News</option>
+              <option value="">选择分类</option>
+              <option value="技术">技术</option>
+              <option value="Web开发">Web开发</option>
+              <option value="前端">前端</option>
+              <option value="后端">后端</option>
+              <option value="设计">设计</option>
+              <option value="教程">教程</option>
+              <option value="新闻">新闻</option>
             </select>
           </div>
           
           <div class="form-group">
-            <label for="tags">Tags (comma separated)</label>
+            <label for="tags">标签 (逗号分隔)</label>
             <input 
               type="text" 
               id="tags" 
               v-model="tagsInput" 
               class="form-input"
-              placeholder="vuejs, javascript, tutorial"
+              placeholder="vuejs, javascript, 教程"
             >
             <div class="tag-suggestions">
               <span 
@@ -98,20 +98,20 @@
           </div>
           
           <div class="form-group">
-            <label for="content">Content</label>
+            <label for="content">内容</label>
             <textarea 
               id="content" 
               v-model="currentPost.content" 
               required 
               class="form-textarea"
-              placeholder="Write your post content here..."
+              placeholder="在这里撰写您的文章内容..."
               rows="15"
             ></textarea>
           </div>
           
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">
-              {{ editingPost ? 'Update Post' : 'Publish Post' }}
+              {{ editingPost ? '更新文章' : '发布文章' }}
             </button>
             <button 
               v-if="editingPost" 
@@ -119,30 +119,30 @@
               @click="cancelEdit"
               class="btn btn-secondary"
             >
-              Cancel
+              取消
             </button>
           </div>
         </form>
       </div>
       
       <div class="post-list">
-        <h2>Published Posts</h2>
+        <h2>已发布文章</h2>
         <div class="search-filter">
           <input 
             type="text" 
             v-model="searchQuery" 
-            placeholder="Search posts..."
+            placeholder="搜索文章..."
             class="form-input search-input"
           >
           <select v-model="filterCategory" class="form-input">
-            <option value="">All Categories</option>
-            <option value="Technology">Technology</option>
-            <option value="Web Development">Web Development</option>
-            <option value="Frontend">Frontend</option>
-            <option value="Backend">Backend</option>
-            <option value="Design">Design</option>
-            <option value="Tutorial">Tutorial</option>
-            <option value="News">News</option>
+            <option value="">所有分类</option>
+            <option value="技术">技术</option>
+            <option value="Web开发">Web开发</option>
+            <option value="前端">前端</option>
+            <option value="后端">后端</option>
+            <option value="设计">设计</option>
+            <option value="教程">教程</option>
+            <option value="新闻">新闻</option>
           </select>
         </div>
         
@@ -156,7 +156,7 @@
               <h3>{{ post.title }}</h3>
               <div class="post-meta">
                 <span class="date">{{ formatDate(post.date) }}</span>
-                <span class="author">by {{ post.author }}</span>
+                <span class="author">作者 {{ post.author }}</span>
               </div>
             </div>
             
@@ -173,13 +173,13 @@
             <p class="post-excerpt">{{ post.excerpt }}</p>
             
             <div class="post-actions">
-              <button @click="editPost(post)" class="btn btn-outline">Edit</button>
-              <button @click="deletePost(post.id)" class="btn btn-danger">Delete</button>
+              <button @click="editPost(post)" class="btn btn-outline">编辑</button>
+              <button @click="deletePost(post.id)" class="btn btn-danger">删除</button>
             </div>
           </div>
           
           <div v-if="filteredPosts.length === 0" class="no-posts">
-            <p>No posts found.</p>
+            <p>未找到文章。</p>
           </div>
         </div>
       </div>

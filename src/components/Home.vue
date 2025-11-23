@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <section class="hero">
-      <h1>{{ $t('message.welcome') }}</h1>
-      <p>{{ $t('message.welcome') }}</p>
+      <h1>欢迎来到我的博客</h1>
+      <p>欢迎来到我的博客</p>
     </section>
 
     <div class="content-container">
@@ -12,10 +12,10 @@
             <router-link :to="`/post/${post.id}`">{{ post.title }}</router-link>
           </h2>
           <p class="post-meta">
-            {{ $t('message.by') }} {{ post.author }} {{ $t('message.on') }} {{ formatDate(post.date) }}
+            作者 {{ post.author }} 发布于 {{ formatDate(post.date) }}
           </p>
           <p class="post-excerpt">{{ post.excerpt }}</p>
-          <router-link :to="`/post/${post.id}`" class="read-more">{{ $t('message.read_more') }}</router-link>
+          <router-link :to="`/post/${post.id}`" class="read-more">阅读更多</router-link>
         </div>
       </section>
       
@@ -26,11 +26,9 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useI18n } from 'vue-i18n';
 import Sidebar from './Sidebar.vue';
 import { getAllPosts } from '../data/posts.js';
 
-const { t } = useI18n();
 const posts = ref([]);
 
 onMounted(() => {

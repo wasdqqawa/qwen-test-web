@@ -1,47 +1,47 @@
 <template>
   <div class="about">
     <section class="hero">
-      <h1>About This Blog</h1>
-      <p>Learn more about our mission and values</p>
+      <h1>关于本博客</h1>
+      <p>了解我们的使命和价值观</p>
     </section>
 
     <section class="content">
       <div class="about-section">
-        <h2>Our Story</h2>
-        <p>This blog was created to share knowledge, experiences, and insights about web development, technology, and the digital world. We believe in the power of sharing knowledge and helping others learn and grow.</p>
+        <h2>我们的故事</h2>
+        <p>这个博客创建的目的是分享关于Web开发、技术和数字世界的知识、经验和见解。我们相信分享知识的力量，帮助他人学习和成长。</p>
         
-        <p>Founded in 2025, our mission is to provide high-quality, accessible content that helps developers of all levels improve their skills and stay up-to-date with the latest trends in technology.</p>
+        <p>成立于2025年，我们的使命是提供高质量、易获取的内容，帮助各个级别的开发人员提高技能，并了解技术领域的最新趋势。</p>
       </div>
 
       <div class="about-section">
-        <h2>What We Do</h2>
-        <p>We create comprehensive tutorials, in-depth articles, and practical guides on various topics including:</p>
+        <h2>我们的工作</h2>
+        <p>我们创建全面的教程、深入的文章和实用指南，涵盖各种主题，包括：</p>
         <ul>
-          <li>Frontend frameworks (Vue.js, React, Angular)</li>
-          <li>Backend technologies and APIs</li>
-          <li>Web performance optimization</li>
-          <li>Modern development tools and practices</li>
-          <li>UI/UX design principles</li>
+          <li>前端框架（Vue.js、React、Angular）</li>
+          <li>后端技术和API</li>
+          <li>Web性能优化</li>
+          <li>现代开发工具和实践</li>
+          <li>UI/UX设计原则</li>
         </ul>
       </div>
 
       <div class="about-section">
-        <h2>Our Team</h2>
+        <h2>我们的团队</h2>
         <div class="team-grid">
           <div class="team-member">
             <div class="avatar">JD</div>
-            <h3>Jane Doe</h3>
-            <p>Senior Frontend Developer</p>
+            <h3>简·多伊</h3>
+            <p>高级前端开发工程师</p>
           </div>
           <div class="team-member">
             <div class="avatar">JS</div>
-            <h3>John Smith</h3>
-            <p>Full Stack Engineer</p>
+            <h3>约翰·史密斯</h3>
+            <p>全栈工程师</p>
           </div>
           <div class="team-member">
             <div class="avatar">AJ</div>
-            <h3>Alex Johnson</h3>
-            <p>Tech Writer & Editor</p>
+            <h3>亚历克斯·约翰逊</h3>
+            <p>技术作家和编辑</p>
           </div>
         </div>
       </div>
