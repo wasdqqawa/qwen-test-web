@@ -4,7 +4,7 @@
       <input 
         type="text" 
         v-model="searchQuery" 
-        placeholder="Search blog posts..." 
+        :placeholder="$t('message.search') + '...'" 
         @input="performSearch"
         class="search-input"
       />
@@ -14,7 +14,7 @@
     </div>
     
     <div v-if="searchResults.length > 0" class="search-results">
-      <h3>Search Results ({{ searchResults.length }})</h3>
+      <h3>{{ $t('message.search') }} {{ $t('message.results') }} ({{ searchResults.length }})</h3>
       <div 
         v-for="post in searchResults" 
         :key="post.id" 
@@ -23,55 +23,56 @@
       >
         <h4>{{ post.title }}</h4>
         <p>{{ post.excerpt }}</p>
-        <small>By {{ post.author }} on {{ formatDate(post.date) }}</small>
+        <small>{{ $t('message.by') }} {{ post.author }} {{ $t('message.on') }} {{ formatDate(post.date) }}</small>
       </div>
     </div>
     
     <div v-else-if="searchQuery && searchResults.length === 0" class="no-results">
-      <p>No results found for "{{ searchQuery }}"</p>
+      <p>{{ $t('message.no_results') }} "{{ searchQuery }}"</p>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useI18n } from 'vue-i18n';
 import { getAllPosts, searchPosts } from '../data/posts.js';
 
-export default {
-  name: 'Search',
-  data() {
-    return {
-      searchQuery: '',
-      allPosts: [],
-      searchResults: []
-    }
-  },
-  mounted() {
-    // 获取所有文章数据
-    this.getAllPosts();
-  },
-  methods: {
-    getAllPosts() {
-      this.allPosts = getAllPosts();
-    },
-    performSearch() {
-      if (!this.searchQuery.trim()) {
-        this.searchResults = [];
-        return;
-      }
-      
-      this.searchResults = searchPosts(this.searchQuery);
-    },
-    formatDate(dateString) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return new Date(dateString).toLocaleDateString(undefined, options);
-    },
-    goToPost(id) {
-      this.$router.push(`/post/${id}`);
-      this.searchQuery = '';
-      this.searchResults = [];
-    }
+const { t } = useI18n();
+const router = useRouter();
+
+const searchQuery = ref('');
+const allPosts = ref([]);
+const searchResults = ref([]);
+
+onMounted(() => {
+  loadAllPosts();
+});
+
+const loadAllPosts = () => {
+  allPosts.value = getAllPosts();
+};
+
+const performSearch = () => {
+  if (!searchQuery.value.trim()) {
+    searchResults.value = [];
+    return;
   }
-}
+  
+  searchResults.value = searchPosts(searchQuery.value);
+};
+
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
+const goToPost = (id) => {
+  router.push(`/post/${id}`);
+  searchQuery.value = '';
+  searchResults.value = [];
+};
 </script>
 
 <style scoped>
@@ -85,6 +86,7 @@ export default {
   border: 1px solid #ced4da;
   border-radius: 4px;
   overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .search-input {
@@ -97,15 +99,16 @@ export default {
 
 .search-button {
   padding: 0 1rem;
-  background: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
   cursor: pointer;
   font-size: 1.2rem;
+  transition: background 0.3s ease;
 }
 
 .search-button:hover {
-  background: #5a6fd8;
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a418e 100%);
 }
 
 .search-results {

@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <section class="hero">
-      <h1>Welcome to My Blog</h1>
-      <p>A place to share thoughts, ideas, and experiences</p>
+      <h1>{{ $t('message.welcome') }}</h1>
+      <p>{{ $t('message.welcome') }}</p>
     </section>
 
     <div class="content-container">
@@ -12,10 +12,10 @@
             <router-link :to="`/post/${post.id}`">{{ post.title }}</router-link>
           </h2>
           <p class="post-meta">
-            By {{ post.author }} on {{ formatDate(post.date) }}
+            {{ $t('message.by') }} {{ post.author }} {{ $t('message.on') }} {{ formatDate(post.date) }}
           </p>
           <p class="post-excerpt">{{ post.excerpt }}</p>
-          <router-link :to="`/post/${post.id}`" class="read-more">Read More</router-link>
+          <router-link :to="`/post/${post.id}`" class="read-more">{{ $t('message.read_more') }}</router-link>
         </div>
       </section>
       
@@ -24,33 +24,27 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Sidebar from './Sidebar.vue';
 import { getAllPosts } from '../data/posts.js';
 
-export default {
-  name: 'Home',
-  components: {
-    Sidebar
-  },
-  data() {
-    return {
-      posts: []
-    }
-  },
-  mounted() {
-    this.loadPosts();
-  },
-  methods: {
-    loadPosts() {
-      this.posts = getAllPosts();
-    },
-    formatDate(dateString) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(dateString).toLocaleDateString(undefined, options)
-    }
-  }
-}
+const { t } = useI18n();
+const posts = ref([]);
+
+onMounted(() => {
+  loadPosts();
+});
+
+const loadPosts = () => {
+  posts.value = getAllPosts();
+};
+
+const formatDate = (dateString) => {
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
 </script>
 
 <style scoped>
@@ -61,6 +55,18 @@ export default {
   color: white;
   border-radius: 8px;
   margin-bottom: 2rem;
+  animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero h1 {
@@ -84,11 +90,23 @@ export default {
   padding: 1.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease;
 }
 
 .post-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .post-title {
@@ -123,10 +141,15 @@ export default {
   color: #667eea;
   text-decoration: none;
   font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid #667eea;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .read-more:hover {
-  text-decoration: underline;
+  background-color: #667eea;
+  color: white;
 }
 
 @media (min-width: 768px) {
