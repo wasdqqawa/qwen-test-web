@@ -51,7 +51,7 @@ npm run deploy
 
 ### Method 2: Using GitHub Actions (Recommended for automated deployment)
 
-The project includes a GitHub Actions workflow file at `.github/workflows/deploy.yml` that will automatically deploy your site when you push to the main branch.
+The project includes a GitHub Actions workflow file at `.github/workflows/static.yml` that will automatically deploy your site when you push to the main branch.
 
 ## Content Management
 
