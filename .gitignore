@@ -1,17 +1,16 @@
 ```
 # Dependencies
 node_modules/
-package-lock.json
 
 # Build artifacts
 dist/
 build/
-*.js
+*.js.map
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
@@ -20,26 +19,31 @@ build/
 # Logs
 *.log
 
-# Temp files
-*.tmp
-*.swp
-
-# OS
-.DS_Store
-Thumbs.db
-
 # Python (if present)
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 
-# Compiled files
-*.o
-*.obj
-*.so
-*.dll
-*.exe
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Cache
+.mypy_cache/
+.pytest_cache/
+.nyc_output/
+coverage/lcov-report/
 
 # Compressed files
 *.zip
