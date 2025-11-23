@@ -9,6 +9,7 @@ import Contact from './components/Contact.vue'
 import BlogPost from './components/BlogPost.vue'
 import Category from './components/Category.vue'
 import Search from './components/Search.vue'
+import PostManager from './components/PostManager.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -16,7 +17,8 @@ const routes = [
   { path: '/contact', component: Contact },
   { path: '/post/:id', name: 'BlogPost', component: BlogPost, props: true },
   { path: '/categories', component: Category },
-  { path: '/search', component: Search }
+  { path: '/search', component: Search },
+  { path: '/manage', component: PostManager }
 ]
 
 const router = createRouter({

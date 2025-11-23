@@ -1,6 +1,6 @@
 # Vue Blog for GitHub Pages
 
-A modern, responsive blog built with Vue 3 and Vite, optimized for deployment on GitHub Pages. This project includes advanced features like post navigation, search functionality, categories, comments, and a responsive design.
+A modern, responsive blog built with Vue 3 and Vite, optimized for deployment on GitHub Pages. This project includes advanced features like post navigation, search functionality, categories, comments, and a responsive design with a content management system.
 
 ## Features
 
@@ -10,6 +10,7 @@ A modern, responsive blog built with Vue 3 and Vite, optimized for deployment on
 - **Categories**: Browse posts by category with filtering capability
 - **Comments System**: Interactive comment system with replies and likes
 - **Sidebar**: Includes recent posts, popular posts, and tags
+- **Content Management**: Create, edit, and manage posts through the Post Manager interface
 - **Modern UI**: Clean and attractive user interface
 - **Static File Deployment**: Optimized for GitHub Pages hosting
 
@@ -50,41 +51,19 @@ npm run deploy
 
 ### Method 2: Using GitHub Actions (Recommended for automated deployment)
 
-Create a `deploy.yml` file in the `.github/workflows` directory:
+The project includes a GitHub Actions workflow file at `.github/workflows/deploy.yml` that will automatically deploy your site when you push to the main branch.
 
-```yml
-name: Build and Deploy
+## Content Management
 
-on:
-  push:
-    branches: [ main ]
+The blog includes a Post Manager feature accessible through the "Manage Posts" link in the navigation. You can:
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+- Create new blog posts
+- Edit existing posts
+- Delete posts
+- Filter and search posts
+- Organize posts by category and tags
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build
-      run: npm run build
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
-        publish_branch: gh-pages
-```
+All posts are stored in the client-side data layer in `/src/data/posts.js`.
 
 ## Project Structure
 
@@ -97,8 +76,11 @@ src/
 │   ├── Comments.vue       # Comments system component
 │   ├── Contact.vue        # Contact page component with form
 │   ├── Home.vue           # Main home page with posts and sidebar
+│   ├── PostManager.vue    # Content management interface
 │   ├── Search.vue         # Search functionality component
 │   └── Sidebar.vue        # Sidebar with recent/popular posts and tags
+├── data/                  # Centralized data management
+│   └── posts.js           # All blog posts data and helper functions
 ├── App.vue               # Main application component with navigation
 ├── main.js               # Vue application entry and router configuration
 └── assets/               # Static assets
@@ -111,7 +93,7 @@ You can easily customize the blog:
 1. Modify `src/components/Home.vue` to change the home page content
 2. Update `src/components/About.vue` for the about page
 3. Update `src/components/Contact.vue` for the contact page
-4. Add more blog posts in `src/components/BlogPost.vue` and `src/components/Home.vue`
+4. Add more blog posts in `src/data/posts.js`
 5. Add new categories in `src/components/Category.vue`
 6. Update navigation links in `src/App.vue`
 7. Modify styling in the `<style>` tags of each component

@@ -49,6 +49,7 @@
 
 <script>
 import Search from './Search.vue';
+import { getRecentPosts, getAllPosts, getAllTags } from '../data/posts.js';
 
 export default {
   name: 'Sidebar',
@@ -57,52 +58,20 @@ export default {
   },
   data() {
     return {
-      allPosts: [
-        {
-          id: 1,
-          title: 'Getting Started with Vue.js',
-          excerpt: 'Vue.js is a progressive JavaScript framework for building user interfaces...',
-          date: '2025-01-15',
-          author: 'Jane Doe',
-          likes: 42,
-          comments: 8,
-          tags: ['Vue.js', 'JavaScript', 'Tutorial']
-        },
-        {
-          id: 2,
-          title: 'Understanding Modern Web Development',
-          excerpt: 'Modern web development involves various technologies and practices...',
-          date: '2025-01-10',
-          author: 'John Smith',
-          likes: 36,
-          comments: 12,
-          tags: ['Web Development', 'JavaScript', 'Frontend']
-        },
-        {
-          id: 3,
-          title: 'The Future of Web Technologies',
-          excerpt: 'As we look ahead, several emerging technologies are poised to reshape...',
-          date: '2025-01-05',
-          author: 'Alex Johnson',
-          likes: 28,
-          comments: 5,
-          tags: ['Future Tech', 'WebAssembly', 'PWA']
-        }
-      ],
-      tags: ['Vue.js', 'JavaScript', 'Web Development', 'CSS', 'HTML', 'Frontend', 'Tutorial', 'PWA']
+      allPosts: getAllPosts(),
+      tags: getAllTags()
     }
   },
   computed: {
     recentPosts() {
       // 按日期排序，获取最新的3篇文章
-      return [...this.allPosts]
-        .sort((a, b) => new Date(b.date) - new Date(a.date))
-        .slice(0, 3);
+      return getRecentPosts(3);
     },
     popularPosts() {
       // 按点赞数排序，获取最热门的3篇文章
+      // 在实际应用中，这应该基于真实的点赞数据
       return [...this.allPosts]
-        .sort((a, b) => b.likes - a.likes)
+        .sort((a, b) => (b.likes || 0) - (a.likes || 0))
         .slice(0, 3);
     }
   },
