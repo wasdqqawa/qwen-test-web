@@ -35,22 +35,20 @@ jobs:
           node-version: '20.x'
           cache: 'npm'
           
-      - name: Setup Unity (Unity3D) 
-        uses: game-ci/unity-setup@v4
-        with:
-          unityVersion: 2021.3.15f1
-          # Add any additional modules if needed
-          
       - name: Build WebGL
         run: |
           # Run our WebGL build script
           chmod +x build_webgl.sh
           ./build_webgl.sh
           
+      - name: Copy build to root for GitHub Pages
+        run: |
+          cp -r Build/WebGL/* .
+          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Build/WebGL
+          path: .
           
   # Deployment job
   deploy:

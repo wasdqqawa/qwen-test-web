@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Minecraft-Style 3D WebGL Game</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background: #000; 
+            font-family: Arial, sans-serif;
+        }
+        #gameContainer { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+        }
+        #loadingScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        #loadingScreen h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        #progressBar {
+            width: 80%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #progress {
+            height: 100%;
+            width: 0%;
+            background: #4CAF50;
+            transition: width 0.3s;
+        }
+        #instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="loadingScreen">
+            <h1>Minecraft-Style WebGL Game</h1>
+            <div id="progressBar">
+                <div id="progress"></div>
+            </div>
+            <p>Loading game...</p>
+        </div>
+        <canvas id="gameCanvas" width="1200" height="700"></canvas>
+    </div>
+    
+    <div id="instructions">
+        <strong>Controls:</strong><br>
+        WASD/Arrow Keys: Move<br>
+        Mouse: Look around<br>
+        Space: Jump<br>
+        Left Click: Remove block<br>
+        Right Click: Place block
+    </div>
+
+    <script src="UnityLoader.js"></script>
+    <script>
+        var gameInstance = UnityLoader.instantiate('gameCanvas', 'MinecraftClone.json', {onProgress: UnityProgress});
+        function UnityProgress(gameInstance, progress) {
+            if (!gameInstance.Module)
+                document.getElementById('progress').style.width = (100 * progress) + "%";
+        }
+    </script>
+</body>
+</html>

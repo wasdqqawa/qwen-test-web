@@ -1,85 +1,7 @@
 ```
-# Unity project files
-Library/
-Temp/
-Obj/
-Build/
-Builds/
-*.unityproj
-*.sln
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.unity
-*.unity.meta
-*.asset
-*.asset.meta
-*.prefab
-*.prefab.meta
-*.mat
-*.mat.meta
-*.anim
-*.anim.meta
-*.controller
-*.controller.meta
-*.overrides
-*.overrides.meta
-*.mask
-*.mask.meta
-*.blend
-*.blend.meta
-*.fbx
-*.fbx.meta
-*.dae
-*.dae.meta
-*.3ds
-*.3ds.meta
-*.obj
-*.obj.meta
-*.max
-*.max.meta
-*.c4d
-*.c4d.meta
-*.blend1
-*.a
-*.so
-*.jar
-*.bat
-*.sh
-*.exe
-*.dll
-*.pdb
-*.meta
-*.pidb
-*.pref
-*.db
-*.bin
-*.idx
-*.map
-*.tmp
-*.log
-*.cache
-*.ilk
-*.manifest
-*.meta
-*.pidb
-*.pref
-*.db
-*.bin
-*.idx
-*.map
-*.tmp
-*.log
-*.cache
-*.ilk
-*.manifest
-*.DS_Store
-Thumbs.db
-
 # Build artifacts
 build/
+dist/
 
 # Environment files
 .env
@@ -88,6 +10,27 @@ build/
 
 # Logs
 *.log
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Dependencies
+node_modules/
+__pycache__/
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+target/
+.gradle/
+
+# System files
+.DS_Store
+Thumbs.db
 
 # Compressed files
 *.zip
