@@ -7,6 +7,7 @@ public class NetworkUIManager : MonoBehaviour
     public GameObject connectionPanel;
     public Button hostButton;
     public Button joinButton;
+    public Button singlePlayerButton;  // 添加单人模式按钮
     public InputField roomIdInput;
     public Text statusText;
     public Text playerCountText;
@@ -15,6 +16,7 @@ public class NetworkUIManager : MonoBehaviour
     public GameObject gameUI;
     
     private bool isConnected = false;
+    private bool isSinglePlayerMode = false;  // 添加单人模式标志
 
     void Start()
     {
@@ -41,6 +43,11 @@ public class NetworkUIManager : MonoBehaviour
         {
             joinButton.onClick.AddListener(OnJoinButtonClicked);
         }
+        
+        if (singlePlayerButton != null)
+        {
+            singlePlayerButton.onClick.AddListener(OnSinglePlayerButtonClicked);
+        }
     }
 
     void OnHostButtonClicked()
@@ -56,6 +63,25 @@ public class NetworkUIManager : MonoBehaviour
             
             InvokeRepeating("UpdatePlayerCount", 0f, 1f); // 每秒更新玩家数量
         }
+    }
+
+    void OnSinglePlayerButtonClicked()
+    {
+        // 直接进入单人模式，不启动网络连接
+        isSinglePlayerMode = true;
+        isConnected = true;
+        
+        // 启动WebRTCNetworkManager的单人模式
+        if (WebRTCNetworkManager.Instance != null)
+        {
+            WebRTCNetworkManager.Instance.StartSinglePlayerMode();
+        }
+        
+        if (statusText != null) statusText.text = "Single Player Mode";
+        if (connectionPanel != null) connectionPanel.SetActive(false);
+        if (gameUI != null) gameUI.SetActive(true);
+        
+        // 在单人模式下，不需要更新玩家数量
     }
 
     void OnJoinButtonClicked()
@@ -85,7 +111,7 @@ public class NetworkUIManager : MonoBehaviour
     void Update()
     {
         // 更新连接状态
-        if (WebRTCNetworkManager.Instance != null)
+        if (!isSinglePlayerMode && WebRTCNetworkManager.Instance != null)
         {
             if (!WebRTCNetworkManager.Instance.IsConnected() && isConnected)
             {

@@ -11,6 +11,7 @@ public class WebRTCNetworkManager : MonoBehaviour
     
     [Header("Network Settings")]
     public bool isHost = false;
+    public bool isSinglePlayerMode = false;  // 添加单人模式标志
     public int maxPlayers = 4;
     public float syncRate = 0.1f;
     
@@ -120,6 +121,17 @@ public class WebRTCNetworkManager : MonoBehaviour
         if (debugMode)
             Debug.Log("Started as Host (Simulated). Player ID: " + localPlayerId);
 #endif
+    }
+    
+    public void StartSinglePlayerMode()
+    {
+        // 在单人模式下，我们仍然初始化网络管理器，但不会尝试连接到任何其他玩家
+        isSinglePlayerMode = true;
+        isHost = true; // 在单人模式下，玩家就是主机
+        connectedPlayers[localPlayerId] = new NetworkPlayer(localPlayerId, true);
+        
+        if (debugMode)
+            Debug.Log("Started in Single Player Mode. Player ID: " + localPlayerId);
     }
     
     public void JoinGame(string roomId)
@@ -270,14 +282,19 @@ public class WebRTCNetworkManager : MonoBehaviour
     public bool IsConnected()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
-        return isInitialized && WebRTC_IsConnected();
+        return isInitialized && (isSinglePlayerMode || WebRTC_IsConnected());
 #else
-        return isInitialized && connectedPlayers.Count > 0;
+        return isInitialized && (isSinglePlayerMode || connectedPlayers.Count > 0);
 #endif
     }
     
     public int GetPlayerCount()
     {
+        if (isSinglePlayerMode)
+        {
+            return 1; // 在单人模式下，只计算本地玩家
+        }
+        
 #if UNITY_WEBGL && !UNITY_EDITOR
         return isInitialized ? WebRTC_GetPeerCount() + 1 : connectedPlayers.Count; // +1 for local player
 #else
