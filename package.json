@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node WebSocketServer.js",
     "server": "node WebSocketServer.js",
+    "build": "./build_webgl.sh",
+    "deploy": "./deploy_to_ghpages.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["game", "webgl", "minecraft", "multiplayer"],

@@ -20,6 +20,23 @@ public class BlockInteraction : MonoBehaviour
         {
             PlaceBlock();
         }
+        
+        // 移动设备触摸支持
+        if (MobileUIManager.Instance != null && MobileUIManager.Instance.IsMobile())
+        {
+            // 移动设备上不使用鼠标输入
+        }
+    }
+    
+    // 供移动UI调用的模拟点击方法
+    public void SimulateLeftClick()
+    {
+        DestroyBlock();
+    }
+    
+    public void SimulateRightClick()
+    {
+        PlaceBlock();
     }
 
     void DestroyBlock()

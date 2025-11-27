@@ -19,6 +19,11 @@ public class MainMenuUI : MonoBehaviour
     
     [Header("Game Scene")]
     public string gameSceneName = "SampleScene";
+    
+    [Header("Settings")]
+    public GameObject settingsPanel;
+    public Button settingsButton;
+    public Button settingsBackButton;
 
     void Start()
     {
@@ -31,6 +36,7 @@ public class MainMenuUI : MonoBehaviour
         // 确保所有面板初始状态正确
         if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
         if (multiplayerMenuPanel != null) multiplayerMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
     }
 
     void SetupButtonCallbacks()
@@ -49,6 +55,17 @@ public class MainMenuUI : MonoBehaviour
         if (quitButton != null)
         {
             quitButton.onClick.AddListener(OnQuitButtonClicked);
+        }
+        
+        // 设置按钮事件
+        if (settingsButton != null)
+        {
+            settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+        }
+        
+        if (settingsBackButton != null)
+        {
+            settingsBackButton.onClick.AddListener(OnSettingsBackButtonClicked);
         }
         
         // 多人游戏菜单按钮事件
@@ -71,7 +88,7 @@ public class MainMenuUI : MonoBehaviour
     void OnSinglePlayerButtonClicked()
     {
         // 设置网络管理器为单人模式
-        WebSocketNetworkManager.Instance?.StartSinglePlayerMode();
+        ImprovedWebSocketNetworkManager.Instance?.StartSinglePlayerMode();
         
         // 加载游戏场景
         SceneManager.LoadScene(gameSceneName);
@@ -87,7 +104,7 @@ public class MainMenuUI : MonoBehaviour
     void OnHostButtonClicked()
     {
         // 设置网络管理器为主机模式
-        WebSocketNetworkManager.Instance?.StartHost();
+        ImprovedWebSocketNetworkManager.Instance?.StartHost();
         
         // 加载游戏场景
         SceneManager.LoadScene(gameSceneName);
@@ -98,11 +115,25 @@ public class MainMenuUI : MonoBehaviour
         if (!string.IsNullOrEmpty(roomIdInput.text))
         {
             // 设置网络管理器为加入游戏模式
-            WebSocketNetworkManager.Instance?.JoinGame(roomIdInput.text);
+            ImprovedWebSocketNetworkManager.Instance?.JoinGame(roomIdInput.text);
             
             // 加载游戏场景
             SceneManager.LoadScene(gameSceneName);
         }
+    }
+
+    void OnSettingsButtonClicked()
+    {
+        // 显示设置面板
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+    }
+
+    void OnSettingsBackButtonClicked()
+    {
+        // 返回主菜单
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
     }
 
     void OnBackButtonClicked()
@@ -121,5 +152,21 @@ public class MainMenuUI : MonoBehaviour
         // 在编辑器或其他平台中退出应用
         Application.Quit();
 #endif
+    }
+
+    public void UpdateLocalization()
+    {
+        // 更新UI本地化文本
+        if (SettingsManager.Instance != null)
+        {
+            if (singlePlayerButton != null)
+                singlePlayerButton.GetComponent<UnityEngine.UI.Text>().text = SettingsManager.Instance.GetLocalizedText("single_player");
+            if (multiplayerButton != null)
+                multiplayerButton.GetComponent<UnityEngine.UI.Text>().text = SettingsManager.Instance.GetLocalizedText("multiplayer");
+            if (quitButton != null)
+                quitButton.GetComponent<UnityEngine.UI.Text>().text = SettingsManager.Instance.GetLocalizedText("quit");
+            if (settingsButton != null)
+                settingsButton.GetComponent<UnityEngine.UI.Text>().text = SettingsManager.Instance.GetLocalizedText("settings");
+        }
     }
 }

@@ -1,33 +1,10 @@
 ```
-# Dependencies
-node_modules/
-package-lock.json
-
-# Build artifacts
-dist/
-build/
-*.js.map
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editor/IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
-# Logs
-*.log
-
-# Unity specific
+# Unity project files
 Library/
 Temp/
 Obj/
 Build/
+Builds/
 *.unityproj
 *.sln
 *.user
@@ -35,8 +12,67 @@ Build/
 *.pidb
 *.booproj
 *.svd
+*.unity
+*.asset
 *.meta
-csc.rsp
-.mdb
-*.pdb
+*.prefab
+*.mat
+*.anim
+*.controller
+*.unitypackage
+[ProjectName].tmp
+[ProjectName].log
+[ProjectName]/
+
+# Build output
+build/
+Build/
+dist/
+
+# Dependencies
+node_modules/
+Packages/
+*.tgz
+
+# System files
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp
+*.log
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```

@@ -11,7 +11,10 @@
             padding: 0; 
             overflow: hidden; 
             background: #000; 
-            font-family: 'Courier New', monospace;
+            font-family: 'Minecraft', 'Courier New', Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent; /* Firefox兼容性 */
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background-attachment: fixed;
         }
         #gameContainer { 
             position: absolute; 
@@ -26,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -35,33 +38,50 @@
             z-index: 100;
         }
         #loadingScreen h1 {
-            font-size: 2em;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 3px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff00, 0 0 20px #00ff00; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00; }
         }
         #progressBar {
-            width: 80%;
-            height: 20px;
+            width: 60%;
+            height: 25px;
             background: #333;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
         }
         #progress {
             height: 100%;
             width: 0%;
-            background: #4CAF50;
-            transition: width 0.3s;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
         }
         #instructions {
             position: absolute;
             bottom: 20px;
             left: 20px;
             color: white;
-            background: rgba(0,0,0,0.5);
-            padding: 10px;
-            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
             font-size: 14px;
             max-width: 400px;
+            border: 1px solid #4CAF50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+        #instructions strong {
+            color: #4CAF50;
         }
         
         /* Minecraft-style main menu */
@@ -71,70 +91,109 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, #2c3e50, #1a1a2e);
+            background: radial-gradient(circle, #1a1a2e 0%, #0f0f23 70%, #0a0a1a 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 200;
             color: white;
+            backdrop-filter: blur(5px);
         }
         
         .menu-title {
-            font-size: 3em;
-            margin-bottom: 50px;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 4em;
+            margin-bottom: 60px;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
             color: #fff;
             text-align: center;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            font-family: 'Minecraft', 'Courier New', Arial, sans-serif;
+            text-transform: uppercase;
+            position: relative;
+        }
+        .menu-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #4CAF50, transparent);
+        }
+        @keyframes titleGlow {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00ff00, 0 0 20px #00ff00; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00; }
         }
         
         .menu-buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         
         .menu-button {
-            width: 300px;
-            padding: 15px 0;
-            background: #4CAF50;
+            width: 320px;
+            padding: 18px 0;
+            background: linear-gradient(145deg, #4CAF50, #2E7D32);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 18px;
-            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            font-family: 'Minecraft', 'Courier New', Arial, sans-serif;
             text-align: center;
-            transition: all 0.2s;
-            box-shadow: 0 4px 0 #2E7D32;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0 #1B5E20, 0 8px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .menu-button:hover::before {
+            left: 100%;
         }
         
         .menu-button:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #2E7D32;
+            background: linear-gradient(145deg, #45a049, #388E3C);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #1B5E20, 0 10px 15px rgba(0,0,0,0.4);
         }
         
         .menu-button:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #2E7D32;
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #1B5E20;
         }
         
         .menu-button.quit {
-            background: #f44336;
-            box-shadow: 0 4px 0 #c62828;
+            background: linear-gradient(145deg, #f44336, #c62828);
+            box-shadow: 0 6px 0 #b71c1c, 0 8px 10px rgba(0,0,0,0.3);
         }
         
         .menu-button.quit:hover {
-            background: #e53935;
-            box-shadow: 0 6px 0 #c62828;
+            background: linear-gradient(145deg, #e53935, #d32f2f);
+            box-shadow: 0 8px 0 #b71c1c, 0 10px 15px rgba(0,0,0,0.4);
         }
         
         .menu-button.quit:active {
-            box-shadow: 0 2px 0 #c62828;
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #b71c1c;
         }
         
         /* Multiplayer menu */
@@ -143,62 +202,309 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8);
+            background: rgba(10, 15, 30, 0.95);
             color: white;
-            padding: 30px;
-            border-radius: 10px;
+            padding: 40px;
+            border-radius: 15px;
             z-index: 201;
             display: none;
-            min-width: 400px;
+            min-width: 450px;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.4);
+            backdrop-filter: blur(10px);
         }
         
         #multiplayerMenu h2 {
             text-align: center;
             margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 2em;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
         }
         
         .multiplayer-options {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
         
         .multiplayer-input-group {
             display: flex;
             align-items: center;
             width: 100%;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         
         .multiplayer-input-group input {
-            padding: 10px;
+            padding: 12px;
             margin-right: 10px;
-            border-radius: 5px;
-            border: none;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
             width: 180px;
             flex-grow: 1;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .multiplayer-input-group input:focus {
+            outline: none;
+            border-color: #8BC34A;
+            box-shadow: 0 0 10px rgba(139, 195, 74, 0.5);
         }
         
         .multiplayer-input-group button {
-            padding: 10px 20px;
-            background: #2196F3;
+            padding: 12px 25px;
+            background: linear-gradient(145deg, #2196F3, #0D47A1);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 0 #0D47A1;
+        }
+        
+        .multiplayer-input-group button:hover {
+            background: linear-gradient(145deg, #1E88E5, #0D47A1);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0D47A1;
+        }
+        
+        .multiplayer-input-group button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #0D47A1;
         }
         
         .back-button {
             margin-top: 20px;
-            padding: 10px 20px;
-            background: #9E9E9E;
+            padding: 12px 25px;
+            background: linear-gradient(145deg, #9E9E9E, #616161);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 0 #424242;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(145deg, #BDBDBD, #757575);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #424242;
+        }
+        
+        .back-button:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #424242;
+        }
+        
+        /* 设置菜单 */
+        #settingsMenu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(10, 15, 30, 0.95);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            z-index: 201;
+            display: none;
+            min-width: 500px;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        #settingsMenu h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-size: 2em;
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.7);
+        }
+        
+        .settings-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .settings-row:hover {
+            background: rgba(76, 175, 80, 0.1);
+        }
+        
+        .settings-label {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .settings-control {
+            flex: 1;
+            text-align: right;
+        }
+        
+        select, input[type="range"] {
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 2px solid #4CAF50;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        input[type="range"] {
+            height: 25px;
+            -webkit-appearance: none;
+            background: #333;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #4CAF50;
+        }
+        
+        #keyBindingsPanel {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px solid #4CAF50;
+        }
+        
+        #keyBindingsPanel h3 {
+            color: #4CAF50;
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.3em;
+        }
+        
+        .key-binding-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 8px 0;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        
+        .key-binding-row:nth-child(odd) {
+            background: rgba(76, 175, 80, 0.05);
+        }
+        
+        .key-binding-row span:first-child {
+            flex: 2;
+        }
+        
+        .key-binding-row span:last-child {
+            flex: 1;
+            text-align: center;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .menu-title {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+            
+            .menu-button {
+                width: 280px;
+                padding: 15px 0;
+                font-size: 18px;
+            }
+            
+            #multiplayerMenu, #settingsMenu {
+                min-width: 320px;
+                padding: 25px;
+                width: 90%;
+                max-width: 400px;
+            }
+            
+            .multiplayer-input-group {
+                flex-direction: column;
+            }
+            
+            .multiplayer-input-group input {
+                margin-right: 0;
+                margin-bottom: 10px;
+                width: 100%;
+            }
+            
+            .multiplayer-input-group button {
+                width: 100%;
+            }
+            
+            .settings-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .settings-label {
+                font-size: 16px;
+            }
+            
+            #instructions {
+                position: static;
+                margin: 20px;
+                max-width: none;
+            }
+        }
+        
+        /* 移动设备优化 */
+        @media (hover: none) and (pointer: coarse) {
+            .menu-button {
+                padding: 20px 0;
+                font-size: 22px;
+            }
+            
+            .menu-button:hover {
+                transform: none;
+            }
         }
     </style>
 </head>
@@ -218,6 +524,7 @@
             <div class="menu-buttons">
                 <button id="singlePlayerButton" class="menu-button">Single Player</button>
                 <button id="multiplayerButton" class="menu-button">Multiplayer</button>
+                <button id="settingsButton" class="menu-button">Settings</button>
                 <button id="quitButton" class="menu-button quit">Quit</button>
             </div>
         </div>
@@ -235,7 +542,108 @@
             </div>
         </div>
         
+        <!-- Settings Menu -->
+        <div id="settingsMenu">
+            <h2>Settings</h2>
+            <div class="settings-options">
+                <div class="settings-row">
+                    <span class="settings-label">Language:</span>
+                    <div class="settings-control">
+                        <select id="languageSelect">
+                            <option value="en">English</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <span class="settings-label">Fullscreen:</span>
+                    <div class="settings-control">
+                        <input type="checkbox" id="fullscreenToggle">
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <span class="settings-label">Sound Volume:</span>
+                    <div class="settings-control">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="80">
+                    </div>
+                </div>
+                <div id="keyBindingsPanel">
+                    <h3>Key Bindings (PC Only)</h3>
+                    <div class="key-binding-row">
+                        <span>Move Forward:</span>
+                        <span id="forwardKey">W</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Move Backward:</span>
+                        <span id="backwardKey">S</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Move Left:</span>
+                        <span id="leftKey">A</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Move Right:</span>
+                        <span id="rightKey">D</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Jump:</span>
+                        <span id="jumpKey">Space</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Break Block:</span>
+                        <span id="breakKey">Left Click</span>
+                    </div>
+                    <div class="key-binding-row">
+                        <span>Place Block:</span>
+                        <span id="placeKey">Right Click</span>
+                    </div>
+                </div>
+                <button id="settingsBackButton" class="back-button">Back</button>
+            </div>
+        </div>
+        
         <canvas id="gameCanvas" width="1200" height="700"></canvas>
+        
+        <!-- Game UI -->
+        <div id="inGameUI" style="display: none;">
+            <button id="pauseButton" class="menu-button" style="position: absolute; top: 20px; right: 20px; width: auto; padding: 10px 20px;">Pause</button>
+            <div id="gameInfo" style="position: absolute; top: 20px; left: 20px; color: white; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px;">
+                <div id="playerPosition">Position: 0, 0, 0</div>
+                <div id="fpsCounter">FPS: 60</div>
+                <div id="playerCount">Players: 1</div>
+            </div>
+            <div id="blockSelection" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px;">
+                <button class="menu-button" style="width: auto; padding: 10px;">Grass</button>
+                <button class="menu-button" style="width: auto; padding: 10px;">Dirt</button>
+                <button class="menu-button" style="width: auto; padding: 10px;">Stone</button>
+                <button class="menu-button" style="width: auto; padding: 10px;">Wood</button>
+                <button class="menu-button" style="width: auto; padding: 10px;">Leaves</button>
+            </div>
+        </div>
+        
+        <!-- Pause Menu -->
+        <div id="pauseMenu" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 300; display: none; justify-content: center; align-items: center;">
+            <div style="background: #1a1a2e; padding: 30px; border-radius: 10px; text-align: center; min-width: 300px;">
+                <h2 style="color: #4CAF50; margin-top: 0;">Game Paused</h2>
+                <div class="menu-buttons">
+                    <button id="resumeButton" class="menu-button">Resume</button>
+                    <button id="settingsInGameButton" class="menu-button">Settings</button>
+                    <button id="mainMenuButton" class="menu-button">Main Menu</button>
+                    <button id="quitInGameButton" class="menu-button quit">Quit</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Controls -->
+        <div id="mobileControls" style="display: none; position: absolute; bottom: 20px; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; box-sizing: border-box;">
+            <div id="mobileMovementControls" style="display: flex; flex-direction: column; align-items: center;">
+                <button id="mobileJumpButton" class="menu-button" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">Jump</button>
+            </div>
+            <div id="mobileActionControls" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <button id="mobileBreakButton" class="menu-button" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">Break</button>
+                <button id="mobilePlaceButton" class="menu-button" style="width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">Place</button>
+            </div>
+        </div>
     </div>
     
     <div id="instructions">
@@ -248,6 +656,26 @@
     </div>
 
     <script>
+        // 检测浏览器兼容性
+        function isFirefox() {
+            return typeof InstallTrigger !== 'undefined';
+        }
+        
+        // 检测移动设备
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+        
+        // Firefox兼容性修复
+        if (isFirefox()) {
+            // Firefox特定的兼容性修复
+            console.log("Firefox detected, applying compatibility fixes");
+            
+            // 修复可能的CSS兼容性问题
+            document.body.style.MozUserSelect = 'none';
+            document.body.style.userSelect = 'none';
+        }
+        
         // 模拟Unity WebGL加载过程
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
@@ -304,7 +732,7 @@
                 webSocket.onmessage = function(event) {
                     // 将接收到的消息传递给Unity
                     if (window.unityInstance) {
-                        window.unityInstance.SendMessage('WebSocketNetworkManager', 'OnWebSocketMessage', event.data);
+                        window.unityInstance.SendMessage('ImprovedWebSocketNetworkManager', 'OnWebSocketMessage', event.data);
                     }
                 };
                 
@@ -348,6 +776,7 @@
             // 隐藏菜单
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('multiplayerMenu').style.display = 'none';
+            document.getElementById('settingsMenu').style.display = 'none';
         }
         
         // 启动主机模式
@@ -361,14 +790,16 @@
                 
                 // 通知Unity启动主机模式
                 if (window.unityInstance) {
-                    window.unityInstance.SendMessage('WebSocketNetworkManager', 'StartHost', '');
+                    window.unityInstance.SendMessage('ImprovedWebSocketNetworkManager', 'StartHost', '');
                 }
                 
                 // 隐藏菜单
                 document.getElementById('mainMenu').style.display = 'none';
                 document.getElementById('multiplayerMenu').style.display = 'none';
+                document.getElementById('settingsMenu').style.display = 'none';
             } else {
                 alert("Failed to connect to server. Please make sure the WebSocket server is running.");
+    <script src="unity_fix.js"></script>
                 startSinglePlayer(); // Fallback to single player
             }
         }
@@ -386,12 +817,13 @@
             if (connectWebSocket('join', roomId)) {
                 // 通知Unity加入游戏
                 if (window.unityInstance) {
-                    window.unityInstance.SendMessage('WebSocketNetworkManager', 'JoinGame', roomId);
+                    window.unityInstance.SendMessage('ImprovedWebSocketNetworkManager', 'JoinGame', roomId);
                 }
                 
                 // 隐藏菜单
                 document.getElementById('mainMenu').style.display = 'none';
                 document.getElementById('multiplayerMenu').style.display = 'none';
+                document.getElementById('settingsMenu').style.display = 'none';
             } else {
                 alert("Failed to connect to server. Please make sure the WebSocket server is running and the Room ID is correct.");
                 startSinglePlayer(); // Fallback to single player
@@ -408,6 +840,11 @@
             document.getElementById('multiplayerMenu').style.display = 'block';
         });
         
+        document.getElementById('settingsButton').addEventListener('click', function() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('settingsMenu').style.display = 'block';
+        });
+        
         document.getElementById('hostButton').addEventListener('click', function() {
             startHost();
         });
@@ -422,9 +859,63 @@
             document.getElementById('mainMenu').style.display = 'block';
         });
         
+        document.getElementById('settingsBackButton').addEventListener('click', function() {
+            document.getElementById('settingsMenu').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'block';
+        });
+        
         document.getElementById('quitButton').addEventListener('click', function() {
             if (confirm("Are you sure you want to quit?")) {
                 window.close();
+            }
+        });
+        
+        // 设置语言选择事件
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            console.log("Language changed to: " + selectedLanguage);
+            
+            // 通知Unity更改语言
+            if (window.unityInstance) {
+                window.unityInstance.SendMessage('SettingsManager', 'OnLanguageChangedFromJS', selectedLanguage);
+            }
+        });
+        
+        // 设置全屏切换事件
+        document.getElementById('fullscreenToggle').addEventListener('change', function() {
+            if (this.checked) {
+                // 尝试进入全屏模式
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                    document.documentElement.msRequestFullscreen();
+                }
+            } else {
+                // 退出全屏模式
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        });
+        
+        // 设置音量滑块事件
+        document.getElementById('volumeSlider').addEventListener('input', function() {
+            const volume = this.value;
+            console.log("Volume changed to: " + volume);
+            
+            // 通知Unity更改音量
+            if (window.unityInstance) {
+                window.unityInstance.SendMessage('SettingsManager', 'OnVolumeChangedFromJS', volume);
             }
         });
     </script>

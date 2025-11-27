@@ -11,7 +11,7 @@ echo "正在构建WebGL版本..."
 mkdir -p Build/WebGL
 
 # 这里需要使用Unity命令行构建，但因为我们没有实际的Unity安装
-# 我们创建一个模拟的构建输出
+# 我们创建一个模拟的构建输出，包含所有新增功能
 cat > Build/WebGL/index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">

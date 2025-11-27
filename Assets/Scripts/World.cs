@@ -165,4 +165,21 @@ public class World : MonoBehaviour
             Instance = null;
         }
     }
+    
+    // 为存档系统添加的公共方法
+    public Dictionary<Vector3Int, GameObject> GetWorldBlocksInternal()
+    {
+        return worldBlocks;
+    }
+    
+    public void ClearWorld()
+    {
+        // 清除所有方块
+        List<Vector3Int> positions = new List<Vector3Int>(worldBlocks.Keys);
+        
+        foreach (Vector3Int pos in positions)
+        {
+            RemoveBlock(pos.x, pos.y, pos.z);
+        }
+    }
 }
