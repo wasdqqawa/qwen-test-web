@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+nav {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav li {
+    margin: 5px 10px;
+}
+
+nav a {
+    display: block;
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #2980b9;
+}
+
+.tool-section {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.tool-section:target {
+    display: block;
+}
+
+.tool-section:not(:target) {
+    display: none;
+}
+
+.tool-section h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* 计算器样式 */
+.calculator {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#calc-display {
+    width: 100%;
+    height: 60px;
+    font-size: 1.5rem;
+    text-align: right;
+    padding: 0 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+}
+
+.calc-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.calc-buttons button {
+    padding: 15px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background: #ecf0f1;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.calc-buttons button:hover {
+    background: #bdc3c7;
+}
+
+.calc-buttons button.equals {
+    grid-column: span 2;
+    background: #e74c3c;
+    color: white;
+}
+
+.calc-buttons button.equals:hover {
+    background: #c0392b;
+}
+
+.calc-buttons .zero {
+    grid-column: span 2;
+}
+
+/* 单位转换器样式 */
+.converter {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#conversion-type {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.conversion-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.conversion-inputs input, .conversion-inputs select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.conversion-inputs input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.conversion-inputs select {
+    min-width: 100px;
+}
+
+#result {
+    background: #f8f9fa;
+}
+
+/* 文本工具样式 */
+.text-tools textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.text-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.text-controls button {
+    padding: 10px 15px;
+    background: #9b59b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.text-controls button:hover {
+    background: #8e44ad;
+}
+
+#text-output {
+    background: #f8f9fa;
+}
+
+.text-result {
+    margin-top: 15px;
+}
+
+#word-count {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #7f8c8d;
+}
+
+/* 颜色选择器样式 */
+.color-picker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#color-input {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#color-value {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: monospace;
+    width: 120px;
+    text-align: center;
+}
+
+.color-preview {
+    width: 200px;
+    height: 100px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #ff0000;
+}
+
+/* 二维码生成器样式 */
+.qrcode-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#qrcode-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.qrcode-generator button {
+    padding: 12px 20px;
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.qrcode-generator button:hover {
+    background: #d35400;
+}
+
+#qrcode-display {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+/* 密码生成器样式 */
+.password-generator {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.password-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.password-options label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.password-options input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.password-length {
+    margin-bottom: 15px;
+}
+
+.password-length label {
+    font-weight: normal;
+}
+
+.password-length input {
+    width: 80px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.password-generator button {
+    padding: 12px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 15px auto;
+}
+
+.password-generator button:hover {
+    background: #2980b9;
+}
+
+.password-output {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.password-output input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.password-output button {
+    padding: 10px 15px;
+    background: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .conversion-inputs {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .conversion-inputs span {
+        align-self: center;
+    }
+    
+    .text-controls {
+        flex-direction: column;
+    }
+    
+    .password-options {
+        flex-direction: column;
+    }
+    
+    .password-output {
+        flex-direction: column;
+    }
+    
+    .tool-section {
+        padding: 15px;
+    }
+}
