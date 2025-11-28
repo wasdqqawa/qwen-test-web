@@ -131,11 +131,12 @@ function initGameScene() {
     
     // Create camera
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.y = 10;
+    camera.position.set(0, 5, 10); // Set initial camera position
     
     // Create renderer
+    const canvas = document.getElementById('gameCanvas');
     renderer = new THREE.WebGLRenderer({ 
-        canvas: document.getElementById('gameCanvas'),
+        canvas: canvas,
         antialias: true 
     });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -174,7 +175,7 @@ function initGameScene() {
     createEnvironment();
     
     // Start game loop
-    animate();
+    renderer.setAnimationLoop(animate);
     
     // Update health display
     updateHealthDisplay();
@@ -273,8 +274,6 @@ function createBuilding() {
 // Game animation loop
 function animate() {
     if (!gameState.gameStarted || gameState.gamePaused) return;
-    
-    requestAnimationFrame(animate);
     
     const delta = clock.getDelta();
     
@@ -436,5 +435,25 @@ window.addEventListener('resize', () => {
     }
 });
 
+// Device detection
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || 
+           (navigator.maxTouchPoints && navigator.maxTouchPoints > 2);
+}
+
+// Apply UI adjustments based on device
+function adjustUIForDevice() {
+    if (isMobile()) {
+        // Mobile-specific UI adjustments
+        document.body.classList.add('mobile-device');
+    } else {
+        // Desktop-specific UI adjustments
+        document.body.classList.add('desktop-device');
+    }
+}
+
 // Start the game when page loads
-window.addEventListener('load', init);
+window.addEventListener('load', () => {
+    adjustUIForDevice();
+    init();
+});

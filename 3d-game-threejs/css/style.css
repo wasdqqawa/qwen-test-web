@@ -233,31 +233,64 @@ body {
     z-index: 200;
 }
 
-/* Desktop-specific styles - no mobile UI elements */
+/* Device-specific styles */
+body.desktop-device .menu-container {
+    min-width: 500px;
+    padding: 50px;
+}
+
+body.desktop-device .menu-btn {
+    padding: 15px;
+    font-size: 1.2em;
+    max-width: 300px;
+}
+
+body.mobile-device .menu-container {
+    width: 90%;
+    padding: 20px;
+}
+
+body.mobile-device .menu-btn {
+    max-width: 100%;
+    padding: 12px;
+    font-size: 1em;
+}
+
+body.mobile-device .settings-option {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+body.mobile-device .settings-option label {
+    margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .menu-container {
+    body:not(.desktop-device) .menu-container {
         width: 90%;
         padding: 20px;
     }
     
-    .menu-btn {
+    body:not(.desktop-device) .menu-btn {
         max-width: 100%;
+        padding: 12px;
+        font-size: 1em;
     }
     
-    .settings-option {
+    body:not(.desktop-device) .settings-option {
         flex-direction: column;
         align-items: flex-start;
     }
     
-    .settings-option label {
+    body:not(.desktop-device) .settings-option label {
         margin-bottom: 5px;
     }
 }
 
-/* Desktop styles */
 @media (min-width: 769px) {
-    .menu-btn {
-        font-size: 1.1em;
-        padding: 12px 24px;
+    body:not(.mobile-device) .menu-btn {
+        font-size: 1.2em;
+        padding: 15px;
     }
 }

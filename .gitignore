@@ -2,77 +2,66 @@
 # Dependencies
 node_modules/
 
-# Logs
+# Build artifacts
+dist/
+build/
+*.js.map
+
+# Logs and temp files
 *.log
-server.log
+*.tmp
 
 # Environment
 .env
 .env.local
 *.env.*
 
-# Package manager
-package-lock.json
-
-# IDE
+# Editors
 .vscode/
 .idea/
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Temp files
-*.tmp
-*.swp
+# Coverage reports
+coverage/
+htmlcov/
+*.coverage
 
-# Python (if applicable)
+# Python
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 .Python
+env/
 venv/
 .venv/
 pip-log.txt
 pip-delete-this-directory.txt
-*.so
-
-# Build outputs
-dist/
-build/
-target/
-*.out
-
-# Testing
+.tox/
 .coverage
-coverage/
-htmlcov/
 .pytest_cache/
 .mypy_cache/
 
-# Compression
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+# Node.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+node_modules/
+dist/
+build/
+.nyc_output/
+coverage/
+*.log
 
+# Compiled CSS and JS
+*.min.css
+*.min.js
+*.bundle.js
+
+# Three.js specific
+js/main.js.map
+css/style.css.map
 ```
