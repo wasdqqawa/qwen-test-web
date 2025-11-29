@@ -1,0 +1,247 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Title styling - Handwritten font */
+.title {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Comic Sans MS', 'Brush Script MT', cursive, sans-serif;
+  font-size: 2.5rem;
+  color: #5a3921;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Instructions styling - Handwritten font */
+.instructions {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-family: 'Comic Sans MS', 'Brush Script MT', cursive, sans-serif;
+  font-size: 1rem;
+  color: #5a3921;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 15;
+  max-width: 300px;
+  text-align: right;
+}
+
+/* Camera container styling */
+.camera-container {
+  position: fixed;
+  bottom: 64px;
+  left: 64px;
+  width: 450px;
+  height: 450px;
+  z-index: 20;
+  background-image: url(https://s.baoyu.io/images/retro-camera.webp);
+  background-size: 100% 100%;
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Shutter button styling */
+.shutter-button {
+  position: absolute;
+  bottom: 40%;
+  left: 18%;
+  width: 11%;
+  height: 11%;
+  cursor: pointer;
+  z-index: 30;
+  background-color: transparent; /* Invisible */
+  border-radius: 50%;
+}
+
+.shutter-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Video viewfinder styling */
+video {
+  position: absolute;
+  bottom: 32%;
+  left: 62%;
+  transform: translateX(-50%);
+  width: 27%;
+  height: 27%;
+  border-radius: 50%;
+  z-index: 30;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Photo card styling */
+.photo-card {
+  position: absolute;
+  width: 200px;
+  aspect-ratio: 3/4; /* 3:4 portrait aspect ratio */
+  z-index: 25;
+  cursor: move;
+  transition: left 0.2s, top 0.2s;
+}
+
+.photo-frame {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.photo-area {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* Toolbar styling */
+.toolbar {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  gap: 5px;
+  z-index: 30;
+}
+
+.toolbar-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Text area styling */
+.text-area {
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #eee;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.date {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+  font-family: 'Comic Sans MS', 'Brush Script MT', cursive, sans-serif;
+}
+
+.caption {
+  font-family: 'Comic Sans MS', 'Brush Script MT', cursive, sans-serif;
+  font-size: 14px;
+  color: #333;
+  cursor: text;
+  min-height: 20px;
+  word-wrap: break-word;
+}
+
+/* Text controls styling */
+.text-controls {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  display: flex;
+  gap: 5px;
+  z-index: 30;
+}
+
+.text-control-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.text-control-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+/* Edit input styling */
+input[type="text"] {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 2px 4px;
+  font-family: 'Comic Sans MS', 'Brush Script MT', cursive, sans-serif;
+  font-size: 14px;
+}
+
+/* Animation for photo ejection */
+@keyframes ejectPhoto {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -40%);
+  }
+}
+
+/* Photo wall styling */
+.photo-wall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.photo-wall > * {
+  pointer-events: auto;
+}
+
+/* Developing effect */
+.developing {
+  filter: blur(5px) grayscale(100%) brightness(0.7);
+  transition: filter 2s ease-in-out;
+}
