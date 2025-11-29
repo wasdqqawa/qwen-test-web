@@ -45,9 +45,9 @@ This application is designed to work on GitHub Pages:
 
 ```
 src/
-├── App.jsx         # Main application component
+├── App.tsx         # Main application component
 ├── App.css         # Styling for the application
-├── index.jsx       # Entry point that renders the app
+├── main.jsx        # Entry point that renders the app
 public/
 ├── index.html      # HTML template
 ```
