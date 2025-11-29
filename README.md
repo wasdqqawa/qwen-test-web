@@ -1,64 +1,71 @@
-# 万能工具箱
+# Bao Retro Camera
 
-一个简洁实用的多功能工具集合网站，包含多种实用工具，可以直接通过GitHub Pages部署访问。
+A nostalgic retro camera web application built with React that allows users to take photos with their webcam and create AI-powered captions. The app features a vintage camera interface with photo ejection animation, drag-and-drop photo wall, and editable captions.
 
-## 功能特性
+## Features
 
-### 1. 计算器
-- 基本四则运算
-- 支持复杂表达式
-- 键盘输入支持
+- **Retro Camera Interface**: Authentic vintage camera design with realistic UI elements
+- **Webcam Integration**: Access to device camera for taking photos
+- **Photo Ejection Animation**: Photos slide out from the camera with a developing effect
+- **Drag-and-Drop Photo Wall**: Move photos around the screen after capturing
+- **AI-Powered Captions**: Generate personalized captions based on photo content (simulated)
+- **Multi-language Support**: Captions adapt to browser language
+- **Editable Text**: Double-click or use pencil icon to edit captions
+- **Photo Controls**: Download and delete functionality
+- **Handwritten Font Style**: All text uses a retro handwritten style
 
-### 2. 单位转换器
-- 长度单位转换（毫米、厘米、米、千米、英寸、英尺等）
-- 重量单位转换（毫克、克、千克、吨、盎司、磅等）
-- 温度单位转换（摄氏度、华氏度、开尔文）
-- 面积单位转换（平方米、平方千米、公顷、英亩等）
+## Technical Implementation
 
-### 3. 文本工具
-- 文本大小写转换
-- 文本反转
-- 字数统计
-- 文本清理
+- **Frontend**: React with hooks for state management
+- **Styling**: CSS with handwritten fonts and retro aesthetic
+- **Camera Access**: WebRTC API for webcam integration
+- **Canvas**: HTML5 Canvas for photo capture and processing
+- **Drag-and-Drop**: Custom implementation using mouse events
+- **Responsive Design**: Fixed camera position with relative element positioning
 
-### 4. 颜色选择器
-- 实时颜色选择
-- HEX值显示
-- 颜色预览
+## Getting Started
 
-### 5. 二维码生成器
-- 将文本或网址转换为二维码
-- 简化实现，便于部署
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start the development server: `npm run dev`
+4. Open your browser to the provided URL
+5. Allow camera access when prompted
+6. Click the camera button to take photos
+7. Drag photos to arrange them on your wall
 
-### 6. 密码生成器
-- 自定义密码长度
-- 可选择包含大写字母、小写字母、数字、符号
-- 一键复制功能
+## GitHub Pages Deployment
 
-## 部署到GitHub Pages
+This application is designed to work on GitHub Pages:
 
-1. 将此代码推送到GitHub仓库
-2. 在仓库设置中启用GitHub Pages
-3. 选择源为 "Deploy from a branch"
-4. 选择 `main` 分支和 `/ (root)` 目录
-5. 保存设置，稍后即可通过 `https://<username>.github.io/<repository-name>` 访问
+1. Run `npm run build` to create a production build
+2. The `dist` folder contains the deployable application
+3. Configure GitHub Pages to serve from the `dist` folder
 
-## 技术特点
-
-- 纯HTML/CSS/JavaScript实现，无需后端
-- 响应式设计，支持移动设备
-- 所有工具功能完整，用户体验良好
-- 代码简洁，易于维护和扩展
-
-## 文件结构
+## File Structure
 
 ```
-.
-├── index.html          # 主页面
-├── styles.css          # 样式文件
-├── script.js           # JavaScript功能实现
-├── 404.html            # GitHub Pages 404页面
-└── README.md           # 项目说明
+src/
+├── App.jsx         # Main application component
+├── App.css         # Styling for the application
+├── index.jsx       # Entry point that renders the app
+public/
+├── index.html      # HTML template
 ```
 
-这个工具箱网站可以满足日常的多种实用需求，所有功能都在一个页面中，方便使用。
+## Browser Compatibility
+
+- Modern browsers with WebRTC support (Chrome, Firefox, Edge, Safari)
+- Camera access requires HTTPS (except localhost for development)
+- Works on mobile devices with camera access
+
+## AI Integration
+
+The application simulates AI caption generation based on the user's browser language. In a production environment, this would connect to the Gemini Flash API to analyze image content and generate personalized blessings or comments.
+
+## Customization
+
+The retro camera image is loaded from `https://s.baoyu.io/images/retro-camera.webp`. To use a different camera image, update the background image URL in the camera container styling.
+
+## License
+
+MIT License
